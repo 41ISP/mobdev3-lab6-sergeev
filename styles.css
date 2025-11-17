@@ -8,57 +8,80 @@ body {
     font-family: Arial, sans-serif;
     background: #f0f0f0;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* GRID-контейнер для всей страницы */
 .container {
     width: 800px;
     height: 600px;
     border: 2px solid #000;
     background: #fff;
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "chat-list chat-window chat-window"
+        "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 200px 1fr;
 }
 
-/* Хедер (флекс) */
 .header {
+    grid-area: header;
     background: #ddd;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Боковое меню чатов */
 .chat-list {
+    grid-area: chat-list;
     background: #f4f4f4;
     padding: 10px;
+    border-right: 1px solid #ccc;
 }
 
-/* Главное окно чата */
 .chat-window {
+    grid-area: chat-window;
     background: #fff;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Сообщения */
 .messages {
+    flex: 1;
     overflow-y: auto;
     background: #eaeaea;
     padding: 10px;
     margin-bottom: 10px;
-}
-
-/* Отдельное сообщение */
-.message {
-    background: #cce5ff;
-    padding: 5px;
     border-radius: 5px;
 }
 
-/* Поле ввода */
+.message {
+    background: #cce5ff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    max-width: 80%;
+}
+
+.message--foreign {
+    background: #f0f0f0;
+    margin-left: auto;
+}
+
 .message-input {
     width: 100%;
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-/* Футер */
 .footer {
+    grid-area: footer;
     background: #ddd;
     padding: 10px;
     text-align: center;
@@ -66,4 +89,22 @@ body {
 
 ul {
     list-style: none;
+}
+
+.chat-list li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.chat-list li:hover {
+    background: #e9e9e9;
+}
+
+.nav, .user-widget {
+    padding: 5px 10px;
+    background: #ccc;
+    border-radius: 3px;
 }
